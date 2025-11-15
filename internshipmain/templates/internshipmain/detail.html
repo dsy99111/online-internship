@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <title>Edukate - Course Detail</title>
+    <title>Internship - Course Detail</title>
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
     <meta content="Course Detail Page" name="description">
 
@@ -55,7 +55,7 @@
         <nav class="navbar navbar-expand-lg bg-white navbar-light py-3 py-lg-0 px-lg-5">
             <a href="{% url 'home' %}" class="navbar-brand ml-lg-3">
                 <h1 class="m-0 text-uppercase text-primary">
-                    <i class="fa fa-book-reader mr-3"></i>Edukate
+                    <i class="fa fa-book-reader mr-3"></i>Internship
                 </h1>
             </a>
             <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
@@ -108,54 +108,73 @@
                     <div class="mb-5">
                         <div class="section-title position-relative mb-5">
                             <h6 class="d-inline-block position-relative text-secondary text-uppercase pb-2">Course Detail</h6>
-                            <h1 class="display-4">Web Design & Development Courses for Beginners</h1>
-                        </div>
-                        <img class="img-fluid rounded w-100 mb-4" src="{% static 'img/header.jpg' %}" alt="Course Image">
-                        <p>Tempor erat elitr at rebum ... magna dolores dolore.</p>
+                           <h1 class="display-4">{{ course.title }}</h1>
+                            </div>
+
+{% if course.image %}
+    <img class="img-fluid rounded w-100 mb-4" src="{{ course.image.url }}" alt="{{ course.title }}">
+{% else %}
+    <img class="img-fluid rounded w-100 mb-4" src="{% static 'img/header.jpg' %}" alt="Course Image">
+{% endif %}
+
+<p>{{ course.description }}</p>
+
                     </div>
 
                     <h2 class="mb-3">Related Courses</h2>
                     <div class="owl-carousel related-carousel position-relative" style="padding: 0 30px;">
-                        {% for i in "123"|make_list %}
-                        <a class="courses-list-item position-relative d-block overflow-hidden mb-2" href="{% url 'detail' %}">
-                            <img class="img-fluid" src="{% static 'img/courses-'|add:i|add:'.jpg' %}" alt="Course {{ i }}">
-                            <div class="courses-text">
-                                <h4 class="text-center text-white px-3">Web Design & Development</h4>
-                                <div class="border-top w-100 mt-3">
-                                    <div class="d-flex justify-content-between p-4">
-                                        <span class="text-white"><i class="fa fa-user mr-2"></i>John Doe</span>
-                                        <span class="text-white"><i class="fa fa-star mr-2"></i>4.5 <small>(250)</small></span>
-                                    </div>
-                                </div>
-                            </div>
-                        </a>
-                        {% endfor %}
+                        {% for rc in related_courses %}
+<a class="courses-list-item position-relative d-block overflow-hidden mb-2"
+   href="{% url 'course_detail' rc.id %}">
+    {% if rc.image %}
+        <img class="img-fluid" src="{{ rc.image.url }}" alt="{{ rc.title }}">
+    {% else %}
+        <img class="img-fluid" src="{% static 'img/default-course.jpg' %}">
+    {% endif %}
+
+    <div class="courses-text">
+        <h4 class="text-center text-white px-3">{{ rc.title }}</h4>
+        <div class="border-top w-100 mt-3">
+            <div class="d-flex justify-content-between p-4">
+                <span class="text-white"><i class="fa fa-user mr-2"></i>{{ rc.instructor }}</span>
+                <span class="text-white"><i class="fa fa-star mr-2"></i>{{ rc.rating }}
+                    <small>({{ rc.reviews_count }})</small>
+                </span>
+            </div>
+        </div>
+    </div>
+</a>
+{% endfor %}
+
                     </div>
                </div>
 
                 <div class="col-lg-4 mt-5 mt-lg-0">
                     <div class="bg-primary mb-5 py-3">
-                        <h3 class="text-white py-3 px-4 m-0">Course Features</h3>
-                        <div class="d-flex justify-content-between border-bottom px-4">
-                            <h6 class="text-white my-3">Instructor</h6>
-                            <h6 class="text-white my-3">John Doe</h6>
-                        </div>
-                        <div class="d-flex justify-content-between border-bottom px-4">
-                            <h6 class="text-white my-3">Rating</h6>
-                            <h6 class="text-white my-3">4.5 <small>(250)</small></h6>
-                        </div>
-                        <div class="d-flex justify-content-between px-4">
-                            <h6 class="text-white my-3">Language</h6>
-                            <h6 class="text-white my-3">English</h6>
-                        </div>
-                        <h5 class="text-white py-3 px-4 m-0">Course Price: $199</h5>
-                        <div class="py-3 px-4">
-                            <a class="btn btn-block btn-secondary py-3 px-5" href="#">Enroll Now</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
+    <h3 class="text-white py-3 px-4 m-0">Course Features</h3>
+
+    <div class="d-flex justify-content-between border-bottom px-4">
+        <h6 class="text-white my-3">Instructor</h6>
+        <h6 class="text-white my-3">{{ course.instructor }}</h6>
+    </div>
+
+    <div class="d-flex justify-content-between border-bottom px-4">
+        <h6 class="text-white my-3">Rating</h6>
+        <h6 class="text-white my-3">{{ course.rating }} <small>({{ course.reviews_count }})</small></h6>
+    </div>
+
+    <div class="d-flex justify-content-between border-bottom px-4">
+        <h6 class="text-white my-3">Language</h6>
+        <h6 class="text-white my-3">{{ course.language }}</h6>
+    </div>
+
+    <h5 class="text-white py-3 px-4 m-0">Course Price: ₹{{ course.price }}</h5>
+
+    <div class="py-3 px-4">
+        <a class="btn btn-block btn-secondary py-3 px-5" href="#">Enroll Now</a>
+    </div>
+</div>
+
     </div>
     <!-- Detail End -->
 

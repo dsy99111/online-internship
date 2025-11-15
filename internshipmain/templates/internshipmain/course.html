@@ -3,7 +3,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>Edukate - Online Education Website</title>
+    <title>Internship - Online Education Website</title>
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
     <meta content="Free HTML Templates" name="keywords">
     <meta content="Free HTML Templates" name="description">
@@ -31,18 +31,33 @@
         <div class="row py-2 px-lg-5">
             <div class="col-lg-6 text-center text-lg-left mb-2 mb-lg-0">
                 <div class="d-inline-flex align-items-center text-white">
-                    <small><i class="fa fa-phone-alt mr-2"></i>+012 345 6789</small>
+                    <small><i class="fa fa-phone-alt mr-2"></i>+091 81785-93528</small>
                     <small class="px-3">|</small>
-                    <small><i class="fa fa-envelope mr-2"></i>info@example.com</small>
+                    <small><i class="fa fa-envelope mr-2"></i>dsy99111@gmail.com</small>
                 </div>
             </div>
             <div class="col-lg-6 text-center text-lg-right">
                 <div class="d-inline-flex align-items-center">
-                    <a class="text-white px-2" href="#"><i class="fab fa-facebook-f"></i></a>
-                    <a class="text-white px-2" href="#"><i class="fab fa-twitter"></i></a>
-                    <a class="text-white px-2" href="#"><i class="fab fa-linkedin-in"></i></a>
-                    <a class="text-white px-2" href="#"><i class="fab fa-instagram"></i></a>
-                    <a class="text-white pl-2" href="#"><i class="fab fa-youtube"></i></a>
+                  <a href="https://www.facebook.com/profile.php?id=100067208660401"
+   style="margin-right:10px; display:inline-block;"
+   class="text-white-50">
+    <i class="fab fa-facebook-f"></i>
+</a>
+
+<a href="https://www.linkedin.com/in/dharmender-singh-87997899/"
+   style="margin-right:10px; display:inline-block;"
+   class="text-white-50">
+    <i class="fab fa-linkedin-in"></i>
+</a>
+
+<a href="https://www.youtube.com/@codewithdharm"
+   target="_blank"
+   style="margin-right:10px; display:inline-block;"
+   class="text-danger">
+    <i class="fab fa-youtube fa-lg"></i>
+</a>
+
+
                 </div>
             </div>
         </div>
@@ -55,7 +70,7 @@
         <nav class="navbar navbar-expand-lg bg-white navbar-light py-3 py-lg-0 px-lg-5">
             <a href="{% url 'home' %}" class="navbar-brand ml-lg-3">
                 <h1 class="m-0 text-uppercase text-primary">
-                    <i class="fa fa-book-reader mr-3"></i>Edukate
+                    <i class="fa fa-book-reader mr-3"></i>Internship
                 </h1>
             </a>
             <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
@@ -69,7 +84,8 @@
                     <div class="nav-item dropdown">
                         <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Pages</a>
                         <div class="dropdown-menu m-0">
-                            <a href="{% url 'detail' %}" class="dropdown-item">Course Detail</a>
+                            <a href="#" class="dropdown-item">Course Detail</a>
+
                             <a href="{% url 'feature' %}" class="dropdown-item">Our Features</a>
                             <a href="{% url 'team' %}" class="dropdown-item">Instructors</a>
                             <a href="{% url 'testimonial' %}" class="dropdown-item">Testimonial</a>
@@ -77,7 +93,7 @@
                     </div>
                     <a href="{% url 'contact' %}" class="nav-item nav-link">Contact</a>
                 </div>
-                <a href="#" class="btn btn-primary py-2 px-4 d-none d-lg-block">Join Us</a>
+                <a href="https://www.codecademyonline.com/register/" class="btn btn-primary py-2 px-4 d-none d-lg-block">Join Us</a>
             </div>
         </nav>
     </div>
@@ -119,7 +135,47 @@
     {% comment %} The existing course grid section remains unchanged {% endcomment %}
     <div class="container-fluid py-5">
         <div class="container py-5">
-            {% comment %} Your course cards here... {% endcomment %}
+           <div class="row">
+
+    {% for course in courses %}
+    <div class="col-lg-4 col-md-6 mb-4">
+        <div class="courses-list-item position-relative d-block overflow-hidden">
+
+            <!-- Course Image -->
+            {% if course.image %}
+            <img class="img-fluid" src="{{ course.image.url }}" alt="{{ course.title }}">
+            {% else %}
+            <img class="img-fluid" src="{% static 'img/default-course.jpg' %}" alt="default">
+            {% endif %}
+
+            <!-- Text Section -->
+            <div class="courses-text">
+                <h4 class="text-center text-white px-3">{{ course.title }}</h4>
+                <div class="border-top w-100 mt-3">
+                    <div class="d-flex justify-content-between p-4">
+                        <span class="text-white">
+                            <i class="fa fa-user mr-2"></i> {{ course.instructor }}
+                        </span>
+                        <span class="text-white">
+                            <i class="fa fa-star mr-2"></i> {{ course.rating }}
+                            <small>({{ course.reviews_count }})</small>
+                        </span>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- View Details Button -->
+        <a class="btn btn-primary w-100 mt-2" href="{% url 'course_detail' course.id %}">
+            View Details
+        </a>
+
+    </div>
+    {% endfor %}
+
+</div>
+
         </div>
     </div>
     <!-- Courses End -->

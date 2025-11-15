@@ -10,4 +10,6 @@ urlpatterns = [
     path('feature/', views.feature, name='feature'),       # ✅ Added
     path('team/', views.team, name='team'),               # ✅ Added
     path('testimonial/', views.testimonial, name='testimonial'),  # ✅ Added
+    path('course/<int:id>/', views.course_detail, name='course_detail'),
+
 ]

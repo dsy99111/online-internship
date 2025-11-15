@@ -4,116 +4,210 @@
 
 <head>
     <meta charset="utf-8">
-    <title>Edukate - Online Education Website</title>
-    <meta content="width=device-width, initial-scale=1.0" name="viewport">
-    <meta content="Free HTML Templates" name="keywords">
-    <meta content="Free HTML Templates" name="description">
+    <title>Internship | Learn Anywhere, Anytime</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="keywords" content="education, online learning, courses, university">
+    <meta name="description" content="Internship - Modern Online Learning Platform">
 
     <!-- Favicon -->
-    <link href="{% static 'img/favicon.ico' %}" rel="icon">
+    <link rel="icon" href="{% static 'img/favicon.ico' %}">
 
-    <!-- Google Web Fonts -->
-    <link rel="preconnect" href="https://fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css2?family=Jost:wght@500;600;700&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
 
     <!-- Font Awesome -->
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
 
     <!-- Libraries Stylesheet -->
     <link href="{% static 'lib/owlcarousel/assets/owl.carousel.min.css' %}" rel="stylesheet">
 
-    <!-- Customized Bootstrap Stylesheet -->
+    <!-- Bootstrap + Custom Styles -->
     <link href="{% static 'css/style.css' %}" rel="stylesheet">
+
+    <style>
+        /* ---------- Modern Enhancements ---------- */
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #f8f9fa;
+        }
+
+        /* Navbar */
+        .navbar {
+            transition: all 0.3s ease-in-out;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+        }
+
+        .navbar-brand h1 {
+            font-weight: 700;
+            letter-spacing: 1px;
+        }
+
+        .navbar-light .nav-link {
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        .navbar-light .nav-link:hover,
+        .navbar-light .nav-link.active {
+            color: #007bff !important;
+        }
+
+        /* Hero Section */
+        .jumbotron {
+            background: linear-gradient(120deg, rgba(0, 123, 255, 0.85), rgba(0, 212, 255, 0.85)),
+                        url("{% static 'img/header-bg.jpg' %}") center/cover no-repeat;
+            color: white;
+            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+            border-radius: 0 0 60px 60px;
+        }
+
+        .jumbotron h1.display-1 {
+            font-weight: 700;
+            animation: fadeInUp 1.5s ease;
+        }
+
+        .btn-secondary {
+            background: #007bff;
+            border: none;
+            transition: 0.3s;
+        }
+
+        .btn-secondary:hover {
+            background: #0056b3;
+        }
+
+        /* Call-to-action */
+        .cta-section {
+            background: linear-gradient(135deg, #007bff, #6610f2);
+            color: #fff;
+            text-align: center;
+            padding: 80px 20px;
+            margin-top: -40px;
+            border-radius: 40px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+        }
+
+        .cta-section h2 {
+            font-weight: 700;
+            margin-bottom: 20px;
+        }
+
+        .cta-section .btn {
+            background: #fff;
+            color: #007bff;
+            font-weight: 600;
+            border-radius: 30px;
+            transition: all 0.3s ease;
+        }
+
+        .cta-section .btn:hover {
+            background: #f0f0f0;
+            transform: translateY(-3px);
+        }
+
+        /* Animation */
+        @keyframes fadeInUp {
+            0% {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Responsive Fix */
+        @media (max-width: 768px) {
+            .jumbotron h1.display-1 {
+                font-size: 2.5rem;
+            }
+
+            .cta-section {
+                border-radius: 20px;
+            }
+        }
+    </style>
 </head>
 
 <body>
-    <!-- Topbar Start -->
-    <div class="container-fluid bg-dark">
-        <div class="row py-2 px-lg-5">
-            <div class="col-lg-6 text-center text-lg-left mb-2 mb-lg-0">
-                <div class="d-inline-flex align-items-center text-white">
-                    <small><i class="fa fa-phone-alt mr-2"></i>+012 345 6789</small>
-                    <small class="px-3">|</small>
-                    <small><i class="fa fa-envelope mr-2"></i>info@example.com</small>
-                </div>
+
+    <!-- Topbar -->
+    <div class="container-fluid bg-dark text-white py-2">
+        <div class="row px-lg-5">
+            <div class="col-md-6 text-center text-md-left small">
+                <i class="fa fa-phone-alt me-2"></i> +091 81785-93528 |
+                <i class="fa fa-envelope ms-2 me-1"></i> dsy99111@gmail.com
             </div>
-            <div class="col-lg-6 text-center text-lg-right">
-                <div class="d-inline-flex align-items-center">
-                    <a class="text-white px-2" href="#"><i class="fab fa-facebook-f"></i></a>
-                    <a class="text-white px-2" href="#"><i class="fab fa-twitter"></i></a>
-                    <a class="text-white px-2" href="#"><i class="fab fa-linkedin-in"></i></a>
-                    <a class="text-white px-2" href="#"><i class="fab fa-instagram"></i></a>
-                    <a class="text-white pl-2" href="#"><i class="fab fa-youtube"></i></a>
-                </div>
+            <div class="col-md-6 text-center text-md-right">
+                <a href="https://www.facebook.com/profile.php?id=100067208660401" class="text-white-50 me-3"><i class="fab fa-facebook-f"></i></a>
+
+                <a href="https://www.linkedin.com/in/dharmender-singh-87997899/" class="text-white-50 me-3"><i class="fab fa-linkedin-in"></i></a>
+                <a href="https://www.youtube.com/@codewithdharm" target="_blank" class="text-danger me-3">
+    <i class="fab fa-youtube fa-lg"></i>
+</a>
             </div>
         </div>
     </div>
-    <!-- Topbar End -->
 
-
-    <!-- Navbar Start -->
-    <div class="container-fluid p-0">
-        <nav class="navbar navbar-expand-lg bg-white navbar-light py-3 py-lg-0 px-lg-5">
-            <a href="{% url 'home' %}" class="navbar-brand ml-lg-3">
-                <h1 class="m-0 text-uppercase text-primary">
-                    <i class="fa fa-book-reader mr-3"></i>Edukate
-                </h1>
-            </a>
-            <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse justify-content-between px-lg-3" id="navbarCollapse">
-                <div class="navbar-nav mx-auto py-0">
-                    <a href="{% url 'home' %}" class="nav-item nav-link active">Home</a>
-                    <a href="{% url 'about' %}" class="nav-item nav-link">About</a>
-                    <a href="{% url 'courses' %}" class="nav-item nav-link">Courses</a>
-                    <div class="nav-item dropdown">
-                        <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Pages</a>
-                        <div class="dropdown-menu m-0">
-                            <a href="{% url 'detail' %}" class="dropdown-item">Course Detail</a>
-                            <a href="{% url 'feature' %}" class="dropdown-item">Our Features</a>
-                            <a href="{% url 'team' %}" class="dropdown-item">Instructors</a>
-                            <a href="{% url 'testimonial' %}" class="dropdown-item">Testimonial</a>
-                        </div>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-white sticky-top px-lg-5 py-3">
+        <a href="{% url 'home' %}" class="navbar-brand">
+            <h1 class="text-primary"><i class="fa fa-book-reader me-2"></i>Internship</h1>
+        </a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse justify-content-end" id="navbarCollapse">
+            <ul class="navbar-nav">
+                <li class="nav-item"><a href="{% url 'home' %}" class="nav-link active">Home</a></li>
+                <li class="nav-item"><a href="{% url 'about' %}" class="nav-link">About</a></li>
+                <li class="nav-item"><a href="{% url 'courses' %}" class="nav-link">Courses</a></li>
+                <li class="nav-item dropdown">
+                    <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Pages</a>
+                    <div class="dropdown-menu">
+                        <a href="{% url 'detail' %}" class="dropdown-item">Course Detail</a>
+                        <a href="{% url 'feature' %}" class="dropdown-item">Our Features</a>
+                        <a href="{% url 'team' %}" class="dropdown-item">Instructors</a>
+                        <a href="{% url 'testimonial' %}" class="dropdown-item">Testimonials</a>
                     </div>
-                    <a href="{% url 'contact' %}" class="nav-item nav-link">Contact</a>
-                </div>
-                <a href="#" class="btn btn-primary py-2 px-4 d-none d-lg-block">Join Us</a>
-            </div>
-        </nav>
-    </div>
-    <!-- Navbar End -->
+                </li>
+                <li class="nav-item"><a href="{% url 'contact' %}" class="nav-link">Contact</a></li>
+            </ul>
+            <a href="https://www.codecademyonline.com/register/" class="btn btn-primary rounded-pill px-4 ms-lg-3 d-none d-lg-block">Join Us</a>
+        </div>
+    </nav>
 
+    <!-- Hero Section -->
+    <header class="jumbotron jumbotron-fluid text-center">
+        <div class="container py-5">
+            <h1 class="display-1 mb-3">Learn From Home</h1>
+            <p class="lead mb-4">Upgrade your skills with world-class online education</p>
 
-    <!-- Header Start -->
-    <div class="jumbotron jumbotron-fluid position-relative overlay-bottom" style="margin-bottom: 90px;">
-        <div class="container text-center my-5 py-5">
-            <h1 class="text-white mt-4 mb-4">Learn From Home</h1>
-            <h1 class="text-white display-1 mb-5">Education Courses</h1>
-            <div class="mx-auto mb-5" style="width: 100%; max-width: 600px;">
-                <div class="input-group">
-                    <div class="input-group-prepend">
-                        <button class="btn btn-outline-light bg-white text-body px-4 dropdown-toggle" type="button"
-                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Courses</button>
-                        <div class="dropdown-menu">
-                            <a class="dropdown-item" href="#">Courses 1</a>
-                            <a class="dropdown-item" href="#">Courses 2</a>
-                            <a class="dropdown-item" href="#">Courses 3</a>
-                        </div>
-                    </div>
-                    <input type="text" class="form-control border-light" style="padding: 30px 25px;" placeholder="Keyword">
+            <div class="mx-auto mb-5" style="max-width: 600px;">
+                <div class="input-group shadow-lg rounded-pill overflow-hidden">
+                    <input type="text" class="form-control border-0 px-4 py-3" placeholder="Search for Courses...">
                     <div class="input-group-append">
-                        <button class="btn btn-secondary px-4 px-lg-5">Search</button>
+                        <button class="btn btn-secondary px-4 py-3">Search</button>
                     </div>
                 </div>
             </div>
+
+            <a href="{% url 'courses' %}" class="btn btn-light btn-lg rounded-pill shadow-sm px-5">Explore Courses</a>
         </div>
-    </div>
-    <!-- Header End -->
+    </header>
 
+    <!-- Call to Action -->
+    <section class="cta-section my-5 mx-auto container">
+        <h2>Start Learning Today!</h2>
+        <p class="mb-4">Join thousands of learners worldwide upgrading their skills through Internship online.</p>
+        <a href="{% url 'contact' %}" class="btn btn-light btn-lg">Get Started</a>
+    </section>
 
-    <!-- About, Feature, Courses, Team, Testimonial, Contact, Footer -->
-    {% comment %} Include your other sections or use {% include 'partials/about.html' %}, etc. {% endcomment %}
+    <!-- Footer -->
+    {% include 'partials/footer.html' %}
 
     <!-- Scripts -->
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
