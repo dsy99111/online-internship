@@ -4,19 +4,37 @@ from django.contrib import messages
 from .forms import ContactForm
 from django.shortcuts import render, get_object_or_404
 from .models import Course, Testimonial, Instructor
+from django.db.models import Q
 def home(request):
     return render(request, 'internshipmain/index.html')
 
 def about(request):
-    return render(request, 'internshipmain/about.html')
-def team(request):
-    instructors = Instructor.objects.all()
-    return render(request, 'internshipmain/team.html', {'instructors': instructors})
+    instructor = Instructor.objects.first()   # get first instructor
+    return render(request, 'internshipmain/about.html', {'instructor': instructor})
 
+
+def team(request):
+    instructor = Instructor.objects.first()   # show only one
+    return render(request, 'internshipmain/team.html', {'instructor': instructor})
 
 def courses(request):
-    all_courses = Course.objects.all()
-    return render(request, 'internshipmain/course.html', {'courses': all_courses})
+    q = request.GET.get("q")
+
+    if q:
+        all_courses = Course.objects.filter(
+            Q(title__icontains=q) |
+            Q(description__icontains=q) |
+            Q(category__icontains=q) |
+            Q(language__icontains=q)
+        )
+    else:
+        all_courses = Course.objects.all()
+
+    return render(request, "internshipmain/course.html", {
+        "courses": all_courses,
+        "query": q,
+    })
+
 
 
 

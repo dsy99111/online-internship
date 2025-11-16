@@ -129,6 +129,11 @@
         </div>
     </div>
     <!-- Header End -->
+{% if query %}
+    <h4 class="text-primary mb-4">
+        Search results for "{{ query }}" — {{ courses.count }} found
+    </h4>
+{% endif %}
 
 
     <!-- Courses Start -->

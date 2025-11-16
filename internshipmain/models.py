@@ -41,16 +41,14 @@ class Testimonial(models.Model):
 
 class Instructor(models.Model):
     name = models.CharField(max_length=200)
-    role = models.CharField(max_length=255, default="Instructor & Mentor")
-    bio = models.TextField(blank=True, null=True)
+    role = models.CharField(max_length=255)
+    bio = models.TextField()
     image = models.ImageField(upload_to="instructors/", blank=True, null=True)
+    message = models.TextField(blank=True, null=True)
 
-    # Social Media Links
-    facebook = models.URLField(blank=True, null=True)
     linkedin = models.URLField(blank=True, null=True)
-    twitter = models.URLField(blank=True, null=True)
-    instagram = models.URLField(blank=True, null=True)
     youtube = models.URLField(blank=True, null=True)
+    github = models.URLField(blank=True, null=True)
 
     def __str__(self):
         return self.name

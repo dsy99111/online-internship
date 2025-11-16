@@ -186,14 +186,17 @@
             <h1 class="display-1 mb-3">Learn From Home</h1>
             <p class="lead mb-4">Upgrade your skills with world-class online education</p>
 
-            <div class="mx-auto mb-5" style="max-width: 600px;">
-                <div class="input-group shadow-lg rounded-pill overflow-hidden">
-                    <input type="text" class="form-control border-0 px-4 py-3" placeholder="Search for Courses...">
-                    <div class="input-group-append">
-                        <button class="btn btn-secondary px-4 py-3">Search</button>
-                    </div>
-                </div>
-            </div>
+            <form method="GET" action="{% url 'courses' %}">
+    <div class="input-group shadow-lg rounded-pill overflow-hidden">
+        <input type="text" name="q" class="form-control border-0 px-4 py-3"
+               placeholder="Search for Courses..."
+               value="{{ request.GET.q }}">
+        <div class="input-group-append">
+            <button type="submit" class="btn btn-secondary px-4 py-3">Search</button>
+        </div>
+    </div>
+</form>
+
 
             <a href="{% url 'courses' %}" class="btn btn-light btn-lg rounded-pill shadow-sm px-5">Explore Courses</a>
         </div>
