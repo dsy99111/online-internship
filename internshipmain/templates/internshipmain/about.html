@@ -148,10 +148,15 @@
 
     <!-- Header -->
 
+<!-- Header -->
 <div class="jumbotron jumbotron-fluid text-center bg-primary text-white mb-5">
     <div class="container py-5">
-        <h1 class="display-3 fw-bold">About Internship Online</h1>
-        <p class="lead">Practical Learning • Real-World Projects • Career-Focused Internships</p>
+        <h1 class="display-3 fw-bold">
+            {{ about.heading }}
+        </h1>
+        <p class="lead">
+            {{ about.subheading }}
+        </p>
     </div>
 </div>
 
@@ -159,17 +164,19 @@
 <div class="container py-5">
     <div class="row align-items-center">
         <div class="col-lg-6 mb-4">
-            <img src="{% static 'img/about.jpg' %}" class="img-fluid rounded shadow-lg" alt="About Internship">
+            {% if about.image %}
+                <img src="{{ about.image.url }}" class="img-fluid rounded shadow-lg" alt="About Internship">
+            {% else %}
+                <img src="{% static 'img/default-about.jpg' %}" class="img-fluid rounded shadow-lg" alt="About Internship">
+            {% endif %}
         </div>
         <div class="col-lg-6">
-            <h2 class="fw-bold mb-3">Empowering Students in Computer Science</h2>
+            <h2 class="fw-bold mb-3">{{ about.section_title }}</h2>
             <p class="text-muted">
-                Internship Online is a modern learning platform designed for B.Tech, BCA, MCA, and Computer Science
-                students who want to gain real-world experience through practical and project-based training.
+                {{ about.paragraph1 }}
             </p>
             <p class="text-muted">
-                We provide hands-on internships, industry-level assignments, and guided learning that prepares you for
-                software engineering careers in Web Development, AI/ML, Mobile Apps, Data Structures, and more.
+                {{ about.paragraph2 }}
             </p>
         </div>
     </div>
@@ -180,20 +187,18 @@
     <div class="row text-center">
         <div class="col-lg-6 mb-4">
             <div class="p-4 bg-light rounded shadow-sm">
-                <h3 class="fw-bold">Our Mission</h3>
+                <h3 class="fw-bold">{{ about.mission_title }}</h3>
                 <p class="text-muted mt-3">
-                    To bridge the gap between academic learning and industry expectations by providing practical,
-                    real-time, project-based training for students across India.
+                    {{ about.mission_text }}
                 </p>
             </div>
         </div>
 
         <div class="col-lg-6 mb-4">
             <div class="p-4 bg-light rounded shadow-sm">
-                <h3 class="fw-bold">Our Vision</h3>
+                <h3 class="fw-bold">{{ about.vision_title }}</h3>
                 <p class="text-muted mt-3">
-                    To help every Computer Science student build a strong technical foundation and become industry-ready
-                    with confidence and real project experience.
+                    {{ about.vision_text }}
                 </p>
             </div>
         </div>
@@ -207,22 +212,22 @@
         <div class="col-md-4 mb-4">
             <div class="p-4 rounded shadow-sm bg-white">
                 <i class="fa fa-laptop-code fa-3x text-primary mb-3"></i>
-                <h5 class="fw-bold">Hands-on Projects</h5>
-                <p class="text-muted">Work on real-world assignments and build industry-level applications.</p>
+                <h5 class="fw-bold">{{ about.box1_title }}</h5>
+                <p class="text-muted">{{ about.box1_text }}</p>
             </div>
         </div>
         <div class="col-md-4 mb-4">
             <div class="p-4 rounded shadow-sm bg-white">
                 <i class="fa fa-user-graduate fa-3x text-primary mb-3"></i>
-                <h5 class="fw-bold">Learn from Expert Mentors</h5>
-                <p class="text-muted">Get guidance from industry professionals throughout the internship.</p>
+                <h5 class="fw-bold">{{ about.box2_title }}</h5>
+                <p class="text-muted">{{ about.box2_text }}</p>
             </div>
         </div>
         <div class="col-md-4 mb-4">
             <div class="p-4 rounded shadow-sm bg-white">
                 <i class="fa fa-certificate fa-3x text-primary mb-3"></i>
-                <h5 class="fw-bold">Certificate & Portfolio</h5>
-                <p class="text-muted">Receive a verified certificate and publish your projects to GitHub.</p>
+                <h5 class="fw-bold">{{ about.box3_title }}</h5>
+                <p class="text-muted">{{ about.box3_text }}</p>
             </div>
         </div>
     </div>

@@ -1,6 +1,6 @@
 from django.contrib import admin
 from .models import ContactMessage
-from .models import Course, Testimonial, Instructor
+from .models import Course, Testimonial, Instructor, SiteAbout
 
 @admin.register(ContactMessage)
 class ContactMessageAdmin(admin.ModelAdmin):
@@ -21,3 +21,7 @@ class TestimonialAdmin(admin.ModelAdmin):
 class InstructorAdmin(admin.ModelAdmin):
     list_display = ('name', 'role', 'image')
     search_fields = ('name', 'role')
+
+@admin.register(SiteAbout)
+class SiteAboutAdmin(admin.ModelAdmin):
+    list_display = ('heading', 'section_title')

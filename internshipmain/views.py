@@ -2,14 +2,21 @@ from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib import messages
 from django.db.models import Q
 from .forms import ContactForm
-from .models import Course, Testimonial, Instructor
+from .models import Course, Testimonial, Instructor, SiteAbout
 
 def home(request):
     return render(request, 'internshipmain/index.html')
 
+
 def about(request):
     instructor = Instructor.objects.first()
-    return render(request, 'internshipmain/about.html', {'instructor': instructor})
+    about_content = SiteAbout.objects.first()  # single record
+
+    return render(request, 'internshipmain/about.html', {
+        'instructor': instructor,
+        'about': about_content,
+    })
+
 
 def team(request):
     instructor = Instructor.objects.first()

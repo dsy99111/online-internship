@@ -52,3 +52,41 @@ class Instructor(models.Model):
 
     def __str__(self):
         return self.name
+
+class SiteAbout(models.Model):
+    # Hero section
+    heading = models.CharField(max_length=200, default="About Internship Online")
+    subheading = models.CharField(
+        max_length=300,
+        default="Practical Learning • Real-World Projects • Career-Focused Internships"
+    )
+
+    # Main about content
+    section_title = models.CharField(
+        max_length=200,
+        default="Empowering Students in Computer Science"
+    )
+    paragraph1 = models.TextField(blank=True, null=True)
+    paragraph2 = models.TextField(blank=True, null=True)
+
+    # About image
+    image = models.ImageField(upload_to="about/", blank=True, null=True)
+
+    # Mission & vision
+    mission_title = models.CharField(max_length=200, default="Our Mission")
+    mission_text = models.TextField(blank=True, null=True)
+    vision_title = models.CharField(max_length=200, default="Our Vision")
+    vision_text = models.TextField(blank=True, null=True)
+
+    # Why choose us – 3 boxes
+    box1_title = models.CharField(max_length=200, default="Hands-on Projects")
+    box1_text = models.TextField(blank=True, null=True)
+
+    box2_title = models.CharField(max_length=200, default="Learn from Expert Mentors")
+    box2_text = models.TextField(blank=True, null=True)
+
+    box3_title = models.CharField(max_length=200, default="Certificate & Portfolio")
+    box3_text = models.TextField(blank=True, null=True)
+
+    def __str__(self):
+        return "About Page Content"
