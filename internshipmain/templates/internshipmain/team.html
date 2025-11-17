@@ -46,6 +46,13 @@
             object-fit: cover;
             border-bottom: 4px solid #007bff;
         }
+.instructor-img {
+    width: 100%;
+    height: 350px;       /* Set any height you want */
+    object-fit: cover;   /* Keeps image proportional & zooms nicely */
+    border-radius: 10px; /* Optional: smooth corner */
+}
+
 
         .team-info {
             padding: 25px;
@@ -109,7 +116,7 @@
                 <li class="nav-item dropdown">
                     <a href="#" class="nav-link dropdown-toggle active" data-toggle="dropdown">Pages</a>
                     <div class="dropdown-menu">
-                        <a href="{% url 'detail' %}" class="dropdown-item">Course Detail</a>
+                        <a href="{% url 'courses' %}" class="dropdown-item">Course Detail</a>
                         <a href="{% url 'feature' %}" class="dropdown-item">Features</a>
                         <a href="{% url 'team' %}" class="dropdown-item active">Instructors</a>
                         <a href="{% url 'testimonial' %}" class="dropdown-item">Testimonials</a>
@@ -147,6 +154,11 @@
         {% endif %}
 
         <div class="d-flex justify-content-center">
+            {% if instructor.github %}
+        <a class="mx-1 p-1" target="_blank" href="{{ instructor.github }}">
+            <i class="fab fa-github"></i>
+        </a>
+    {% endif %}
             {% if instructor.linkedin %}
                 <a class="mx-1 p-1" target="_blank" href="{{ instructor.linkedin }}">
                     <i class="fab fa-linkedin-in"></i>
