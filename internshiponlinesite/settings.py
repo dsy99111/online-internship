@@ -116,12 +116,22 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/5.0/howto/static-files/
 
-STATIC_URL = '/static/'
-STATICFILES_DIRS = [os.path.join(BASE_DIR, "internshipmain")]
+#STATIC_URL = '/static/'
+#STATICFILES_DIRS = [os.path.join(BASE_DIR, "internshipmain")]
 
 # Media files (uploaded by admin e.g. About photo)
-MEDIA_URL = '/media/'
-MEDIA_ROOT = BASE_DIR / "media"
+#MEDIA_URL = '/media/'
+#MEDIA_ROOT = BASE_DIR / "media"
+STATIC_URL = '/static/'
+
+STATICFILES_DIRS = [
+    BASE_DIR / "internshipmain/static",
+]
+
+STATIC_ROOT = "/var/www/online-internship/static/"
+
+MEDIA_URL = "/media/"
+MEDIA_ROOT = "/var/www/online-internship/media/"
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field
